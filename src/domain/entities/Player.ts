@@ -3,8 +3,14 @@ import {Sound} from "./Sound";
 export class Player {
    player : HTMLAudioElement;
 
-   constructor(sound: Sound) {
+   constructor(sound: Sound, audioOutputDeviceId: string) {
       this.player = new Audio('file://' + sound.path);
+      // @ts-ignore
+      this.player.setSinkId(audioOutputDeviceId).then(
+         () => {},
+         (e: any)=> console.error("Error when setting sinkId: " + e)
+      )
+
    }
 
    isPlaying() : boolean {

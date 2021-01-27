@@ -30,8 +30,8 @@
     ]
   },
   "build": {
-    "productName": "ElectronReact",
-    "appId": "org.erb.ElectronReact",
+    "productName": "soundboard",
+    "appId": "fr.glecun.soundboard",
     "files": [
       "dist/",
       "node_modules/",
@@ -86,34 +86,22 @@
     ],
     "publish": {
       "provider": "github",
-      "owner": "electron-react-boilerplate",
-      "repo": "electron-react-boilerplate"
+      "owner": "soundboard",
+      "repo": "soundboard"
     }
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/electron-react-boilerplate/electron-react-boilerplate.git"
+    "url" : "git+https://github.com/Glecun/soundboard.git"
   },
   "author": {
-    "name": "Electron React Boilerplate Maintainers",
-    "email": "electronreactboilerplate@gmail.com",
-    "url": "https://electron-react-boilerplate.js.org"
+    "name": "Glecun",
+    "email": "gregoire.lecun@gmail.com",
+    "url": "http://glecun.fr"
   },
-  "contributors": [
-    {
-      "name": "Amila Welihinda",
-      "email": "amilajack@gmail.com",
-      "url": "https://github.com/amilajack"
-    },
-    {
-      "name": "John Tran",
-      "email": "jptran318@gmail.com",
-      "url": "https://github.com/jooohhn"
-    }
-  ],
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/electron-react-boilerplate/electron-react-boilerplate/issues"
+    "url": "https://github.com/Glecun/soundboard/issues"
   },
   "keywords": [
     "electron",
@@ -126,7 +114,7 @@
     "hot",
     "reload"
   ],
-  "homepage": "https://github.com/electron-react-boilerplate/electron-react-boilerplate#readme",
+  "homepage": "https://github.com/Glecun/soundboard/",
   "jest": {
     "testURL": "http://localhost/",
     "moduleNameMapper": {
@@ -248,6 +236,7 @@
     "yarn-deduplicate": "^3.1.0"
   },
   "dependencies": {
+    "@types/react-select": "^4.0.4",
     "electron-debug": "^3.1.0",
     "electron-log": "^4.2.4",
     "electron-updater": "^4.3.4",
@@ -256,6 +245,7 @@
     "react-dom": "^17.0.1",
     "react-icons": "^4.1.0",
     "react-router-dom": "^5.2.0",
+    "react-select": "^4.0.2",
     "regenerator-runtime": "^0.13.5",
     "source-map-support": "^0.5.19"
   },
@@ -263,9 +253,6 @@
     "node": ">=10.x",
     "npm": ">=6.x",
     "yarn": ">=1.21.3"
-  },
-  "collective": {
-    "url": "https://opencollective.com/electron-react-boilerplate-594"
   },
   "browserslist": [],
   "prettier": {

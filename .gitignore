@@ -49,3 +49,4 @@ npm-debug.log.*
 *.sass.d.ts
 *.scss.d.ts
 /sounds/
+/src/main.prod.js.LICENSE.txt
