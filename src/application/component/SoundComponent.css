@@ -1,10 +1,21 @@
 .sound {
    margin-bottom: 6px;
    padding: 10px;
-   font-weight: bold;
    border-bottom: 1px solid grey;
    display: flex;
+   align-items: center;
+}
+
+.play_container {
+   margin-right: 14px;
+   color: green;
+   font-size: 24px;
+}
+
+.name_author_container {
+   display: flex;
    flex-direction: column;
+   font-weight: bold;
 }
 
 .author {
