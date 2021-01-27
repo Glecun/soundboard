@@ -254,6 +254,7 @@
     "history": "^5.0.0",
     "react": "^17.0.1",
     "react-dom": "^17.0.1",
+    "react-icons": "^4.1.0",
     "react-router-dom": "^5.2.0",
     "regenerator-runtime": "^0.13.5",
     "source-map-support": "^0.5.19"

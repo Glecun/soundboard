@@ -1,0 +1,15 @@
+.sounds {
+   display: flex;
+   flex-direction: column;
+}
+
+.custom_songs {
+   display: flex;
+   font-size: 30px;
+   align-items: center;
+   margin-bottom: 10px;
+}
+
+.custom_songs_icon {
+   margin-right: 20px;
+}
