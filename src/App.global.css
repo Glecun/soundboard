@@ -1,9 +1,9 @@
-@import "application/styles/ChooseAudioOutput.css";
-@import "application/styles/CustomSongView.css";
-@import "application/styles/SoundComponent.css";
+@import 'application/styles/ChooseAudioOutput.css';
+@import 'application/styles/CustomSongView.css';
+@import 'application/styles/SoundComponent.css';
 
 body {
-   background-color: #2d2d2d;
-   font-family: "Helvetica","Arial",sans-serif;
-   color: #e0e0e0;
+  background-color: #2d2d2d;
+  font-family: 'Helvetica', 'Arial', sans-serif;
+  color: #e0e0e0;
 }
