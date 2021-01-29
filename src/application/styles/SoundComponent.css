@@ -1,25 +1,24 @@
-
 .sound-component {
-   margin-bottom: 6px;
-   padding: 10px;
-   border-bottom: 1px solid grey;
-   display: flex;
-   align-items: center;
+  margin-bottom: 6px;
+  padding: 10px;
+  border-bottom: 1px solid grey;
+  display: flex;
+  align-items: center;
 }
 
 .sound-component .play-container {
-   margin-right: 14px;
-   color: green;
-   font-size: 24px;
+  margin-right: 14px;
+  color: green;
+  font-size: 24px;
 }
 
 .sound-component .name-author-container {
-   display: flex;
-   flex-direction: column;
-   font-weight: bold;
+  display: flex;
+  flex-direction: column;
+  font-weight: bold;
 }
 
 .sound-component .author {
-   font-size: 13px;
-   font-weight: normal;
+  font-size: 13px;
+  font-weight: normal;
 }
