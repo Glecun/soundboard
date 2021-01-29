@@ -13,7 +13,8 @@ class UserPreferenceAdapter {
   userPreferences: UserPreferences;
 
   constructor() {
-    const userDataPath = (app || remote.app).getPath('userData');
+    const myApp = app || remote?.app;
+    const userDataPath = myApp ? myApp.getPath('userData') : '';
     this.path = path.join(userDataPath, 'user-preferences.json');
     this.userPreferences = UserPreferenceAdapter.parseDataFile(this.path);
   }
