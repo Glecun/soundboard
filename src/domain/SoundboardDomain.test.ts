@@ -1,3 +1,1 @@
-describe('SoundboardDomain', () => {
-
-});
+describe('SoundboardDomain', () => {});
