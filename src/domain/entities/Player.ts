@@ -1,18 +1,19 @@
 import Sound from './Sound';
 
 class Player {
-  player: HTMLMediaElement;
+  player: HTMLAudioElement;
 
   constructor(sound: Sound, audioOutputDeviceId: string) {
-    this.player = new Audio(`file://${sound.path}`);
-    this.player
-      // @ts-ignore
-      .setSinkId(audioOutputDeviceId)
-      .then(
-        () => true,
-        (e: any) => alert(`Error when setting sinkId: ${e}`)
-      )
-      .catch((e: any) => alert(`Cannot set sinkId: ${e}`));
+    this.player = new Audio(`file://${sound.path}`) as HTMLAudioElement;
+    if (audioOutputDeviceId !== 'default') {
+      this.player
+        .setSinkId(audioOutputDeviceId)
+        .then(
+          () => true,
+          (e: any) => alert(`Error when setting sinkId: ${e}`)
+        )
+        .catch((e: any) => alert(`Cannot set sinkId: ${e}`));
+    }
   }
 
   isPlaying(): boolean {

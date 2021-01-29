@@ -48,8 +48,8 @@ const ChooseAudioOutput = () => {
   );
 
   useEffect(() => {
-    navigator.mediaDevices
-      .enumerateDevices()
+    navigator?.mediaDevices
+      ?.enumerateDevices()
       .then((devices) => {
         const optionsDevicesResult = devices
           .filter((device) => device.kind === 'audiooutput')

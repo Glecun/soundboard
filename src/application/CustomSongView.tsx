@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react';
-import { FaMusic } from 'react-icons/all';
+
+import { FaMusic } from 'react-icons/fa/';
 import { getSounds } from '../domain/SoudboardDomain';
 import Sound from '../domain/entities/Sound';
 import ChooseAudioOutput from './component/ChooseAudioOutput';
