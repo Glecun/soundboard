@@ -1,6 +1,6 @@
 import fs from 'fs';
-import { Sound } from '../domain/entities/Sound';
-import { SoundAdapter } from './SoundAdapter';
+import Sound from '../domain/entities/Sound';
+import SoundAdapter from './SoundAdapter';
 
 jest.mock('fs');
 

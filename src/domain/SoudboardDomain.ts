@@ -1,7 +1,7 @@
-import { Sound } from './entities/Sound';
-import { SoundAdapter } from '../infrastructure/SoundAdapter';
-import { UserPreferenceAdapter } from '../infrastructure/UserPreferenceAdapter';
 import { UserPreferences } from './entities/UserPreferences';
+import UserPreferenceAdapter from '../infrastructure/UserPreferenceAdapter';
+import SoundAdapter from '../infrastructure/SoundAdapter';
+import Sound from './entities/Sound';
 
 const soundAdapter = new SoundAdapter();
 const userPreferenceAdapter = new UserPreferenceAdapter();

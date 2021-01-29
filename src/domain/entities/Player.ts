@@ -6,6 +6,7 @@ class Player {
   constructor(sound: Sound, audioOutputDeviceId: string) {
     this.player = new Audio(`file://${sound.path}`);
     this.player
+      // @ts-ignore
       .setSinkId(audioOutputDeviceId)
       .then(
         () => true,

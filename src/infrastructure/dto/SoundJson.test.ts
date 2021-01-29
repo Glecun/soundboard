@@ -1,5 +1,6 @@
 import { SoundJson } from './SoundJson';
-import { Sound } from '../../domain/entities/Sound';
+import Sound from "../../domain/entities/Sound";
+
 
 describe('SoundJson', () => {
   it('should convert SoundJson to Sound', () => {

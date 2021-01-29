@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { FaPlay, FaStop } from 'react-icons/all';
+import { FaPlay, FaStop } from 'react-icons/fa';
 import { getUserPreferences } from '../../domain/SoudboardDomain';
 import Sound from '../../domain/entities/Sound';
 import Player from '../../domain/entities/Player';
