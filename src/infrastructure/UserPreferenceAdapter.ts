@@ -1,14 +1,15 @@
+import { app, remote } from 'electron';
+import fs from 'fs';
 import {
   AudioOutput,
   UserPreferences,
 } from '../domain/entities/UserPreferences';
-import { app, remote } from 'electron';
-import fs from 'fs';
 
 const path = require('path');
 
-export class UserPreferenceAdapter {
-  path: any;
+class UserPreferenceAdapter {
+  path: string;
+
   userPreferences: UserPreferences;
 
   constructor() {
@@ -36,3 +37,5 @@ export class UserPreferenceAdapter {
     }
   }
 }
+
+export default UserPreferenceAdapter;

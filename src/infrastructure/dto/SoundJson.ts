@@ -1,4 +1,4 @@
-import { Sound } from '../../domain/entities/Sound';
+import Sound from '../../domain/entities/Sound';
 
 export class SoundFileJson {
   soundboardEntries: SoundJson[];
@@ -10,6 +10,7 @@ export class SoundFileJson {
 
 export class SoundJson {
   activationKeysNumbers: number[];
+
   file: string;
 
   constructor(activationKeysNumbers: number[], file: string) {

@@ -1,15 +1,17 @@
-import { Sound } from './Sound';
+import Sound from './Sound';
 
-export class Player {
-  player: HTMLAudioElement;
+class Player {
+  player: HTMLMediaElement;
 
   constructor(sound: Sound, audioOutputDeviceId: string) {
-    this.player = new Audio('file://' + sound.path);
-    // @ts-ignore
-    this.player.setSinkId(audioOutputDeviceId).then(
-      () => {},
-      (e: any) => console.error('Error when setting sinkId: ' + e)
-    );
+    this.player = new Audio(`file://${sound.path}`);
+    this.player
+      .setSinkId(audioOutputDeviceId)
+      .then(
+        () => true,
+        (e: any) => alert(`Error when setting sinkId: ${e}`)
+      )
+      .catch((e: any) => alert(`Cannot set sinkId: ${e}`));
   }
 
   isPlaying(): boolean {
@@ -23,7 +25,7 @@ export class Player {
   }
 
   play() {
-    this.player.play().catch((e) => alert('Error when playing sound : ' + e));
+    this.player.play().catch((e) => alert(`Error when playing sound : ${e}`));
   }
 
   stop() {
@@ -31,3 +33,5 @@ export class Player {
     this.player.currentTime = 0;
   }
 }
+
+export default Player;

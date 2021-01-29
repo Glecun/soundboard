@@ -11,6 +11,7 @@ import {
 
 class OptionsDevice {
   value: MediaDeviceInfo;
+
   label: string;
 
   constructor(value: MediaDeviceInfo, label: string) {
@@ -37,7 +38,7 @@ class OptionsDevice {
   }
 }
 
-export const ChooseAudioOutput = () => {
+const ChooseAudioOutput = () => {
   const [optionsDevices, setOptionsDevices] = useState([] as OptionsDevice[]);
   const [selectedOption, setSelectedOption] = useState(
     new OptionsDevice(
@@ -47,20 +48,24 @@ export const ChooseAudioOutput = () => {
   );
 
   useEffect(() => {
-    navigator.mediaDevices.enumerateDevices().then((devices) => {
-      const optionsDevices = devices
-        .filter((device) => device.kind === 'audiooutput')
-        .map((device) => OptionsDevice.fromMediaDeviceInfo(device));
-      let userPreferences = getUserPreferences();
-      setSelectedOption(OptionsDevice.fromUserPreferences(userPreferences));
-      setOptionsDevices(optionsDevices);
-    });
+    navigator.mediaDevices
+      .enumerateDevices()
+      .then((devices) => {
+        const optionsDevicesResult = devices
+          .filter((device) => device.kind === 'audiooutput')
+          .map((device) => OptionsDevice.fromMediaDeviceInfo(device));
+        const userPreferences = getUserPreferences();
+        setSelectedOption(OptionsDevice.fromUserPreferences(userPreferences));
+        setOptionsDevices(optionsDevicesResult);
+        return true;
+      })
+      .catch((reason) => alert(`Cannot enumerate devices${reason}`));
   }, []);
 
-  const onSelect = (selectedOption: OptionsDevice) => {
-    setSelectedOption(selectedOption);
+  const onSelect = (selectedOptionValue: OptionsDevice) => {
+    setSelectedOption(selectedOptionValue);
     setUserPreferences(
-      getUserPreferences().setAudioOutput(selectedOption.toAudioOutput())
+      getUserPreferences().setAudioOutput(selectedOptionValue.toAudioOutput())
     );
   };
 
@@ -102,3 +107,5 @@ export const ChooseAudioOutput = () => {
     </div>
   );
 };
+
+export default ChooseAudioOutput;

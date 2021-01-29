@@ -1,6 +1,8 @@
-export class Sound {
+class Sound {
   name: string;
+
   author: string;
+
   path: string;
 
   constructor(name: string, author: string, path: string) {
@@ -9,3 +11,5 @@ export class Sound {
     this.path = path;
   }
 }
+
+export default Sound;

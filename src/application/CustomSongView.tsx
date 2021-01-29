@@ -1,11 +1,11 @@
 import React, { useEffect, useState } from 'react';
-import { getSounds } from '../domain/SoudboardDomain';
-import { Sound } from '../domain/entities/Sound';
-import { SoundComponent } from './component/SoundComponent';
 import { FaMusic } from 'react-icons/all';
-import { ChooseAudioOutput } from './component/ChooseAudioOutput';
+import { getSounds } from '../domain/SoudboardDomain';
+import Sound from '../domain/entities/Sound';
+import ChooseAudioOutput from './component/ChooseAudioOutput';
+import SoundComponent from './component/SoundComponent';
 
-export const CustomSongView = () => {
+const CustomSongView = () => {
   const [sounds, setSounds] = useState([] as Sound[]);
   useEffect(() => setSounds(getSounds()), []);
 
@@ -17,10 +17,12 @@ export const CustomSongView = () => {
         <span>Custom Songs</span>
       </span>
       <div className="sounds">
-        {sounds.map((sound, i) => (
-          <SoundComponent key={i} sound={sound} />
+        {sounds.map((sound) => (
+          <SoundComponent key={sound.name} sound={sound} />
         ))}
       </div>
     </div>
   );
 };
+
+export default CustomSongView;

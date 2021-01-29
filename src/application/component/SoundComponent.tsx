@@ -1,12 +1,12 @@
 import React, { useState } from 'react';
-import { Sound } from '../../domain/entities/Sound';
 import { FaPlay, FaStop } from 'react-icons/all';
-import { Player } from '../../domain/entities/Player';
 import { getUserPreferences } from '../../domain/SoudboardDomain';
+import Sound from '../../domain/entities/Sound';
+import Player from '../../domain/entities/Player';
 
-export const SoundComponent = (props: { sound: Sound }) => {
+const SoundComponent = ({ sound }: { sound: Sound }) => {
   const [player] = useState(
-    new Player(props.sound, getUserPreferences().audioOutput.id)
+    new Player(sound, getUserPreferences().audioOutput.id)
   );
   const [isPlaying, setIsPlaying] = useState(false);
 
@@ -31,9 +31,11 @@ export const SoundComponent = (props: { sound: Sound }) => {
         )}
       </div>
       <div className="name-author-container">
-        <span>{props.sound.name}</span>
-        <span className="author">{props.sound.author}</span>
+        <span>{sound.name}</span>
+        <span className="author">{sound.author}</span>
       </div>
     </div>
   );
 };
+
+export default SoundComponent;

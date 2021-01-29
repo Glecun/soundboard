@@ -8,7 +8,7 @@ describe('SoundAdapter', () => {
   const soundAdapter = new SoundAdapter();
 
   it('should get sounds', () => {
-    let soundsJsonMock = {
+    const soundsJsonMock = {
       soundboardEntries: [
         {
           file:

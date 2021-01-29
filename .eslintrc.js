@@ -3,6 +3,17 @@ module.exports = {
   rules: {
     // A temporary hack related to IDE not resolving correct package.json
     'import/no-extraneous-dependencies': 'off',
+    '@typescript-eslint/ban-ts-comment': 'warn',
+    'max-classes-per-file': 'warn',
+    'class-methods-use-this': 'warn',
+    'max-len': ['error', { code: 130 }],
+    'array-element-newline': ['error', 'consistent'],
+    'array-bracket-newline': ['error', 'consistent'],
+    'lines-between-class-members': [
+      'error',
+      'always',
+      { exceptAfterSingleLine: true },
+    ],
   },
   parserOptions: {
     ecmaVersion: 2020,
