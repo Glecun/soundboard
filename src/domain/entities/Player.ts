@@ -7,6 +7,7 @@ class Player {
     this.player = new Audio(`file://${sound.path}`) as HTMLAudioElement;
     if (audioOutputDeviceId !== 'default') {
       this.player
+        // @ts-ignore
         .setSinkId(audioOutputDeviceId)
         .then(
           () => true,
