@@ -5,11 +5,11 @@
 
 .custom-songs-view .custom-songs {
   display: flex;
-  font-size: 30px;
+  font-size: 25px;
   align-items: center;
   margin-bottom: 10px;
 }
 
 .custom-songs-view .custom-songs-icon {
-  margin-right: 20px;
+  margin-right: 14px;
 }

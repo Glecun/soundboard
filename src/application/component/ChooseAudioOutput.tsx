@@ -84,6 +84,9 @@ const ChooseAudioOutput = () => {
       backgroundColor: '#2d2d2d',
       borderColor: '#e0e0e0 !important',
       boxShadow: 'none',
+      minWidth: '260px',
+      width: '45vw',
+      marginLeft: '12px',
     }),
     singleValue: (base: any) => ({
       ...base,
@@ -98,6 +101,7 @@ const ChooseAudioOutput = () => {
 
   return (
     <div className="choose-audio-output">
+      <span className="label">Choose audio output:</span>
       <Select
         styles={customStyles}
         value={selectedOption}

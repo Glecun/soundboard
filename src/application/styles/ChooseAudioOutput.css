@@ -1,3 +1,10 @@
 .choose-audio-output {
   margin-bottom: 12px;
+  display: flex;
+  align-items: center;
+  width: 100%;
+}
+
+.choose-audio-output .label {
+  font-size: 20px;
 }
