@@ -6,10 +6,14 @@
   align-items: center;
 }
 
-.sound-component .play-container {
+.sound-component .action-container {
   margin-right: 14px;
-  color: green;
+  color: #008000;
   font-size: 24px;
+}
+
+.sound-component .action-container .stop {
+  color: #c60000;
 }
 
 .sound-component .name-author-container {
