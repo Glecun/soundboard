@@ -1,15 +1,15 @@
-.custom-songs-view .sounds {
+.sounds-view .sounds {
   display: flex;
   flex-direction: column;
 }
 
-.custom-songs-view .custom-songs {
+.sounds-view .title {
   display: flex;
   font-size: 25px;
   align-items: center;
   margin-bottom: 10px;
 }
 
-.custom-songs-view .custom-songs-icon {
+.sounds-view .title-icon {
   margin-right: 14px;
 }
