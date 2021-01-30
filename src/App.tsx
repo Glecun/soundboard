@@ -1,14 +1,30 @@
-import React from 'react';
-import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
+import * as React from 'react';
+import { BrowserRouter as Router, Switch, Route, Link } from 'react-router-dom';
 import './App.global.css';
-import CustomSongView from './application/CustomSongView';
+import { FaCog, FaRegKeyboard } from 'react-icons/fa/';
+import CustomSongView from './application/view/CustomSongView';
+import SettingsView from './application/view/SettingsView';
 
 export default function App() {
   return (
     <Router>
-      <Switch>
-        <Route path="/" component={CustomSongView} />
-      </Switch>
+      <div className="app-view">
+        <div className="menu">
+          <span className="title">
+            <FaRegKeyboard className="icon" />
+            Soundboard
+          </span>
+          <Link className="settings" to="/settings" title="Settings">
+            <FaCog className="icon" />
+          </Link>
+        </div>
+        <div className="body">
+          <Switch>
+            <Route path="/settings" component={SettingsView} />
+            <Route path="/" component={CustomSongView} />
+          </Switch>
+        </div>
+      </div>
     </Router>
   );
 }

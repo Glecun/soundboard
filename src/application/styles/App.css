@@ -1,0 +1,35 @@
+.app-view .menu {
+   height: 60px;
+   display: flex;
+   align-items: center;
+   background-color: #444444;
+   margin-bottom: 12px;
+   box-shadow: 0 2px 2px rgba(0, 0, 0, 0.17);
+   padding-left: 8px;
+}
+
+.app-view .menu .title {
+   font-size: 30px;
+   display: flex;
+   align-items: center;
+}
+
+.app-view .menu .title .icon {
+   font-size: 35px;
+   margin-right: 12px;
+}
+
+.app-view .menu .settings {
+   margin-left: auto;
+   margin-right: 16px;
+   text-decoration: none;
+   color: inherit;
+}
+
+.app-view .menu .settings .icon {
+   font-size: 30px;
+}
+
+.app-view .body{
+   margin: 8px;
+}

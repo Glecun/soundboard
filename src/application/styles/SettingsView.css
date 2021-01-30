@@ -1,0 +1,11 @@
+.settings-view .button {
+   text-decoration: none;
+   color: inherit;
+   margin-bottom: 30px;
+   display: block;
+   width: fit-content;
+}
+
+.settings-view .button .icon{
+   font-size: 45px;
+}
