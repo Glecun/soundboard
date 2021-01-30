@@ -2,7 +2,7 @@ import * as React from 'react';
 import { BrowserRouter as Router, Switch, Route, Link } from 'react-router-dom';
 import './App.global.css';
 import { FaCog, FaRegKeyboard } from 'react-icons/fa/';
-import CustomSongView from './application/view/CustomSongView';
+import SoundsView from './application/view/SoundsView';
 import SettingsView from './application/view/SettingsView';
 
 export default function App() {
@@ -21,7 +21,7 @@ export default function App() {
         <div className="body">
           <Switch>
             <Route path="/settings" component={SettingsView} />
-            <Route path="/" component={CustomSongView} />
+            <Route path="/" component={SoundsView} />
           </Switch>
         </div>
       </div>

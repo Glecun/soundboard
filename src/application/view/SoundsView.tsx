@@ -5,15 +5,15 @@ import Sound from '../../domain/entities/Sound';
 import { getSounds } from '../../domain/SoudboardDomain';
 import SoundComponent from '../component/SoundComponent';
 
-const CustomSongView = () => {
+const SoundsView = () => {
   const [sounds, setSounds] = useState([] as Sound[]);
   useEffect(() => setSounds(getSounds()), []);
 
   return (
-    <div className="custom-songs-view animated fadeInRight">
-      <span className="custom-songs">
-        <FaMusic className="custom-songs-icon" />
-        <span>Custom Songs</span>
+    <div className="sounds-view animated fadeInRight">
+      <span className="title">
+        <FaMusic className="title-icon" />
+        <span>Sounds</span>
       </span>
       <div className="sounds">
         {sounds.map((sound) => (
@@ -24,4 +24,4 @@ const CustomSongView = () => {
   );
 };
 
-export default CustomSongView;
+export default SoundsView;
