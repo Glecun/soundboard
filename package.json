@@ -86,7 +86,7 @@
     ],
     "publish": {
       "provider": "github",
-      "owner": "soundboard",
+      "owner": "glecun",
       "repo": "soundboard"
     }
   },
@@ -99,6 +99,13 @@
     "email": "gregoire.lecun@gmail.com",
     "url": "http://glecun.fr"
   },
+  "contributors": [
+    {
+      "name": "Glecun",
+      "email": "gregoire.lecun@gmail.com",
+      "url": "https://github.com/Glecun"
+    }
+  ],
   "license": "MIT",
   "bugs": {
     "url": "https://github.com/Glecun/soundboard/issues"
