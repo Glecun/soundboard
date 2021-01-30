@@ -23,11 +23,11 @@ const SoundComponent = ({ sound }: { sound: Sound }) => {
 
   return (
     <div className="sound-component">
-      <div className="play-container">
+      <div className="action-container">
         {!isPlaying ? (
           <FaPlay onClick={() => play()} />
         ) : (
-          <FaStop onClick={() => stop()} />
+          <FaStop className="stop" onClick={() => stop()} />
         )}
       </div>
       <div className="name-author-container">
