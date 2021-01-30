@@ -68,7 +68,8 @@
     "win": {
       "target": [
         "nsis"
-      ]
+      ],
+      "publisherName": "Glecun"
     },
     "linux": {
       "target": [
