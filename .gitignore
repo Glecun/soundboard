@@ -50,3 +50,4 @@ npm-debug.log.*
 *.scss.d.ts
 /sounds/
 /src/main.prod.js.LICENSE.txt
+/.github/pfx/
