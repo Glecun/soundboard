@@ -1,5 +1,6 @@
 import * as React from 'react';
 import { BrowserRouter as Router, Switch, Route, Link } from 'react-router-dom';
+import { ToastContainer } from 'react-toastify';
 import './App.global.css';
 import { FaCog, FaRegKeyboard } from 'react-icons/fa/';
 import SoundsView from './application/view/SoundsView';
@@ -19,6 +20,7 @@ export default function App() {
           </Link>
         </div>
         <div className="body">
+          <ToastContainer />
           <Switch>
             <Route path="/settings" component={SettingsView} />
             <Route path="/" component={SoundsView} />

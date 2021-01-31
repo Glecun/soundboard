@@ -1,3 +1,4 @@
+import { toast } from 'react-toastify';
 import { SoundFileJson, SoundJson } from './dto/SoundJson';
 import Sound from '../domain/entities/Sound';
 
@@ -9,7 +10,7 @@ class SoundAdapter {
     try {
       rawData = fs.readFileSync(pathToSoundsJson);
     } catch (e) {
-      alert(
+      toast.info(
         `Cannot read file ${pathToSoundsJson}, please set sounds.json in settings`
       );
     }
@@ -26,7 +27,7 @@ class SoundAdapter {
     try {
       return JSON.parse(rawData);
     } catch (e) {
-      alert(`Cannot parse json: ${rawData}`);
+      toast.error(`Cannot parse json: ${rawData}`);
       return new SoundFileJson([]);
     }
   }

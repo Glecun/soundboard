@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import Select from 'react-select';
+import { toast } from 'react-toastify';
 import {
   getUserPreferences,
   setUserPreferences,
@@ -59,7 +60,7 @@ const ChooseAudioOutput = () => {
         setOptionsDevices(optionsDevicesResult);
         return true;
       })
-      .catch((reason) => alert(`Cannot enumerate devices${reason}`));
+      .catch((reason) => toast.error(`Cannot enumerate devices ${reason}`));
   }, []);
 
   const onSelect = (selectedOptionValue: OptionsDevice) => {

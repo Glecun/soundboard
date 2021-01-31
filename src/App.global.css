@@ -9,6 +9,9 @@
 @import 'application/styles/ChooseSoundsPath.css';
 @import 'application/styles/FiltersComponent.css';
 
+/* toastify */
+@import '../node_modules/react-toastify/dist/ReactToastify.css';
+
 body {
   background-color: #2d2d2d;
   font-family: 'Helvetica', 'Arial', sans-serif;
