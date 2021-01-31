@@ -21,7 +21,7 @@ describe('SoundAdapter', () => {
       .spyOn(fs, 'readFileSync')
       .mockReturnValueOnce(JSON.stringify(soundsJsonMock));
 
-    const sounds = soundAdapter.getSounds();
+    const sounds = soundAdapter.getSounds("./sounds.json");
 
     expect(sounds).toEqual([
       new Sound(

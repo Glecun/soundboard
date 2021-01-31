@@ -7,7 +7,8 @@ const soundAdapter = new SoundAdapter();
 const userPreferenceAdapter = new UserPreferenceAdapter();
 
 export function getSounds(): Sound[] {
-  return soundAdapter.getSounds();
+  const userPreferences = userPreferenceAdapter.getUserPreferences();
+  return soundAdapter.getSounds(userPreferences.pathToSoundsJson);
 }
 
 export function setUserPreferences(userPreferences: UserPreferences) {

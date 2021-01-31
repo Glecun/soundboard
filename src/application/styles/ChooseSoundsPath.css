@@ -1,0 +1,22 @@
+.choose-sounds-path .input-container {
+   font-size: 20px;
+   display: flex;
+   align-items: center;
+   margin-bottom: 2px;
+}
+
+.choose-sounds-path .input-container .label{
+   margin-right: 12px;
+}
+
+.choose-sounds-path .current-path {
+   margin-left: 12px;
+   font-style: italic;
+   font-size: 15px;
+}
+
+.choose-sounds-path .current-path .label{
+   font-weight: bold;
+   font-style: normal;
+}
+
