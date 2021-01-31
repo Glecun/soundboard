@@ -2,14 +2,3 @@
   display: flex;
   flex-direction: column;
 }
-
-.sounds-view .title {
-  display: flex;
-  font-size: 25px;
-  align-items: center;
-  margin-bottom: 10px;
-}
-
-.sounds-view .title-icon {
-  margin-right: 14px;
-}

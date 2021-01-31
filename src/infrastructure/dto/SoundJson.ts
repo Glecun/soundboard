@@ -18,6 +18,10 @@ export class SoundJson {
     this.file = file;
   }
 
+  static fromSoundJson(soundJson: SoundJson) {
+    return new SoundJson(soundJson.activationKeysNumbers, soundJson.file);
+  }
+
   toSound(): Sound {
     const nameExtracted = /.*\/(.*)\..*$/.exec(this.file);
     const name = nameExtracted ? nameExtracted[1] : '';
@@ -25,8 +29,4 @@ export class SoundJson {
     const author = authorExtracted ? authorExtracted[1] : '';
     return new Sound(name, author, this.file);
   }
-}
-
-export function recreateSoundJson(soundJson: SoundJson) {
-  return new SoundJson(soundJson.activationKeysNumbers, soundJson.file);
 }
