@@ -1,8 +1,6 @@
 class Sound {
   name: string;
-
   author: string;
-
   path: string;
 
   constructor(name: string, author: string, path: string) {
