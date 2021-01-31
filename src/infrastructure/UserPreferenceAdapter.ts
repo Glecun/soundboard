@@ -34,7 +34,10 @@ class UserPreferenceAdapter {
       const json = JSON.parse(fs.readFileSync(filePath));
       return new UserPreferences(json.audioOutput, json.pathToSoundsJson);
     } catch (error) {
-      return new UserPreferences(new AudioOutput('default', 'default'), './sounds.json');
+      return new UserPreferences(
+        new AudioOutput('default', 'default'),
+        './sounds.json'
+      );
     }
   }
 }
