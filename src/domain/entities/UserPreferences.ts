@@ -1,6 +1,7 @@
 export class UserPreferences {
   audioOutput: AudioOutput;
-  pathToSoundsJson: string
+
+  pathToSoundsJson: string;
 
   constructor(audioOutput: AudioOutput, pathToSoundsJson: string) {
     this.audioOutput = audioOutput;
@@ -18,6 +19,7 @@ export class UserPreferences {
 
 export class AudioOutput {
   id: string;
+
   name: string;
 
   constructor(id: string, name: string) {
