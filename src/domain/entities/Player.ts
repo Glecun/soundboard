@@ -1,3 +1,4 @@
+import { toast } from 'react-toastify';
 import Sound from './Sound';
 
 class Player {
@@ -11,9 +12,9 @@ class Player {
         .setSinkId(audioOutputDeviceId)
         .then(
           () => true,
-          (e: any) => alert(`Error when setting sinkId: ${e}`)
+          (e: any) => toast.error(`Error when setting sinkId: ${e}`)
         )
-        .catch((e: any) => alert(`Cannot set sinkId: ${e}`));
+        .catch((e: any) => toast.error(`Cannot set sinkId: ${e}`));
     }
   }
 
@@ -28,7 +29,9 @@ class Player {
   }
 
   play() {
-    this.player.play().catch((e) => alert(`Error when playing sound : ${e}`));
+    this.player
+      .play()
+      .catch((e) => toast.error(`Error when playing sound : ${e}`));
   }
 
   stop() {
