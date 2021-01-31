@@ -22,7 +22,7 @@ const SoundComponent = ({ sound }: { sound: Sound }) => {
   };
 
   return (
-    <div className="sound-component">
+    <div className="sound-component animated fadeInRight">
       <div className="action-container">
         {!isPlaying ? (
           <FaPlay onClick={() => play()} />

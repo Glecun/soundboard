@@ -1,0 +1,23 @@
+.filters-component {
+   display: flex;
+   align-items: center;
+   margin-top: 10px;
+}
+
+.filters-component .search-icon {
+   margin-right: 8px;
+   font-size: 24px;
+}
+
+.filters-component .input-search {
+   height: 30px;
+   font-size: 17px;
+   background-color: #3a3a3a;
+   border: 1px solid white;
+   color: white;
+   padding-left: 6px;
+}
+
+.filters-component .input-search::placeholder {
+   color: white;
+}

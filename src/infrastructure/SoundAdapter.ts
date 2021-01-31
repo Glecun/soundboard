@@ -1,4 +1,4 @@
-import { recreateSoundJson, SoundFileJson } from './dto/SoundJson';
+import { SoundFileJson, SoundJson } from './dto/SoundJson';
 import Sound from '../domain/entities/Sound';
 
 const fs = require('fs');
@@ -18,7 +18,7 @@ class SoundAdapter {
       ? SoundAdapter.parseJson(rawData)
       : new SoundFileJson([]);
     return soundsJson.soundboardEntries
-      .map((soundJson) => recreateSoundJson(soundJson))
+      .map((soundJson) => SoundJson.fromSoundJson(soundJson))
       .map((soundJson) => soundJson.toSound());
   }
 
