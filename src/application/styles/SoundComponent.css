@@ -10,6 +10,7 @@
   margin-right: 14px;
   color: #008000;
   font-size: 24px;
+  cursor: pointer;
 }
 
 .sound-component .action-container .stop {

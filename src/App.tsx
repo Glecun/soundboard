@@ -6,6 +6,7 @@ import { FaCog, FaRegKeyboard } from 'react-icons/fa/';
 import { useState } from 'react';
 import SoundsView from './application/view/SoundsView';
 import SettingsView from './application/view/SettingsView';
+import TopBarComponent from './application/component/TopBarComponent';
 
 export default function App() {
   const [stopAllSounds, setStopAllSounds] = useState([] as (() => void)[]);
@@ -15,6 +16,7 @@ export default function App() {
   return (
     <Router>
       <div className="app-view">
+        <TopBarComponent />
         <div className="menu">
           <span className="title">
             <FaRegKeyboard className="icon" />
