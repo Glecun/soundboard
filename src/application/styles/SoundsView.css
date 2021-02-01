@@ -1,6 +1,9 @@
 .sounds-view .sounds {
   display: flex;
   flex-direction: column;
+  height: calc(100vh - 138px);
+  overflow-y: auto;
+  margin-top: 5px;
 }
 
 .sounds-view .actions{

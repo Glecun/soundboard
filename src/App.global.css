@@ -18,10 +18,26 @@ body {
   font-family: 'Helvetica', 'Arial', sans-serif;
   color: #e0e0e0;
   margin: 0;
+  overflow: hidden;
 }
 
 *:focus {
   outline: none;
+}
+
+/* Scrollbar */
+::-webkit-scrollbar {
+  width: 10px;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #212121;
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-track {
+  background: #757575;
+  border-radius: 4px;
 }
 
 /* animate.css */
