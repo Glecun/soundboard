@@ -1,7 +1,6 @@
 .filters-component {
    display: flex;
    align-items: center;
-   margin-top: 10px;
 }
 
 .filters-component .search-icon {

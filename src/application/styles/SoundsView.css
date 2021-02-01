@@ -2,3 +2,27 @@
   display: flex;
   flex-direction: column;
 }
+
+.sounds-view .actions{
+  display: flex;
+  align-items: center;
+  margin-top: 14px;
+}
+
+.sounds-view .actions .button-stop-all {
+  margin-left: auto;
+  background-color: initial;
+  color: red;
+  border: 2px solid red;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-items: center;
+  font-size: 17px;
+  height: 36px;
+  width: 36px;
+}
+
+.sounds-view .actions .button-stop-all .icon-stop-all {
+  flex: 1;
+}

@@ -4,21 +4,28 @@ import { getUserPreferences } from '../../domain/SoudboardDomain';
 import Sound from '../../domain/entities/Sound';
 import Player from '../../domain/entities/Player';
 
-const SoundComponent = ({ sound }: { sound: Sound }) => {
+const SoundComponent = ({
+  sound,
+  registerSound,
+}: {
+  sound: Sound;
+  registerSound: (stopSound: () => void) => void;
+}) => {
   const [player] = useState(
     new Player(sound, getUserPreferences().audioOutput.id)
   );
   const [isPlaying, setIsPlaying] = useState(false);
 
-  const play = () => {
-    player.play();
-    setIsPlaying(true);
-    player.player.addEventListener('ended', () => setIsPlaying(false));
-  };
-
   const stop = () => {
     player.stop();
     setIsPlaying(false);
+  };
+
+  const play = () => {
+    player.play();
+    registerSound(stop);
+    setIsPlaying(true);
+    player.player.addEventListener('ended', () => setIsPlaying(false));
   };
 
   return (
