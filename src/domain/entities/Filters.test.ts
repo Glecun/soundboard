@@ -1,8 +1,9 @@
 import Filters from './Filters';
 import Sound from './Sound';
+import Source from './Source';
 
 describe('FiltersTest', () => {
-  const sound1 = new Sound('toto', 'tata', '');
+  const sound1 = new Sound('toto', 'tata', '', Source.LOCAL);
   it.each([
     ['no filters', new Filters(''), [sound1], [sound1]],
     ['search name exact match', new Filters('toto'), [sound1], [sound1]],

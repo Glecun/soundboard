@@ -7,7 +7,7 @@ import { useState } from 'react';
 import SoundsView from './application/view/SoundsView';
 import SettingsView from './application/view/SettingsView';
 import TopBarComponent from './application/component/TopBarComponent';
-import { playRandomSound } from './domain/SoudboardDomain';
+import soundboardDomain from './domain/SoundboardDomain';
 
 const globalShortcut = require('electron').remote?.globalShortcut;
 
@@ -15,7 +15,9 @@ export default function App() {
   const [stopAllSounds, setStopAllSounds] = useState([] as (() => void)[]);
   const registerSound = (stopSound: () => void) =>
     setStopAllSounds(stopAllSounds.concat(stopSound));
-  globalShortcut?.register('Control+F1', () => playRandomSound());
+  globalShortcut?.register('Control+F1', () =>
+    soundboardDomain.playRandomSound()
+  );
 
   return (
     <Router>
