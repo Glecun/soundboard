@@ -1,8 +1,8 @@
 import React, { useState } from 'react';
 import { FaPlay, FaStop } from 'react-icons/fa';
-import { getUserPreferences } from '../../domain/SoudboardDomain';
 import Sound from '../../domain/entities/Sound';
 import Player from '../../domain/entities/Player';
+import soundboardDomain from '../../domain/SoundboardDomain';
 
 const SoundComponent = ({
   sound,
@@ -12,7 +12,7 @@ const SoundComponent = ({
   registerSound: (stopSound: () => void) => void;
 }) => {
   const [player] = useState(
-    new Player(sound, getUserPreferences().audioOutput.id)
+    new Player(sound, soundboardDomain.getUserPreferences().audioOutput.id)
   );
   const [isPlaying, setIsPlaying] = useState(false);
 

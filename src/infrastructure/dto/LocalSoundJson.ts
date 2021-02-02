@@ -1,15 +1,16 @@
 import * as os from 'os';
 import Sound from '../../domain/entities/Sound';
+import Source from '../../domain/entities/Source';
 
-export class SoundFileJson {
-  soundboardEntries: SoundJson[];
+export class LocalSoundFileJson {
+  soundboardEntries: LocalSoundJson[];
 
-  constructor(soundboardEntries: SoundJson[]) {
+  constructor(soundboardEntries: LocalSoundJson[]) {
     this.soundboardEntries = soundboardEntries;
   }
 }
 
-export class SoundJson {
+export class LocalSoundJson {
   activationKeysNumbers: number[];
 
   file: string;
@@ -19,8 +20,8 @@ export class SoundJson {
     this.file = file;
   }
 
-  static fromSoundJson(soundJson: SoundJson) {
-    return new SoundJson(soundJson.activationKeysNumbers, soundJson.file);
+  static fromLocalSoundJson(soundJson: LocalSoundJson) {
+    return new LocalSoundJson(soundJson.activationKeysNumbers, soundJson.file);
   }
 
   toSound(): Sound {
@@ -35,6 +36,6 @@ export class SoundJson {
     }
     const name = nameExtracted ? nameExtracted[1] : '';
     const author = authorExtracted ? authorExtracted[1] : '';
-    return new Sound(name, author, this.file);
+    return new Sound(name, author, `file://${this.file}`, Source.LOCAL);
   }
 }

@@ -1,22 +1,21 @@
 import React, { BaseSyntheticEvent, useEffect, useState } from 'react';
-import {
-  getUserPreferences,
-  setUserPreferences,
-} from '../../domain/SoudboardDomain';
+import soundboardDomain from '../../domain/SoundboardDomain';
 
 const ChooseSoundsPath = () => {
-  const [soundJsonPath, setSoundJsonPath] = useState('');
+  const [localSoundJsonPath, setLocalSoundJsonPath] = useState('');
 
   useEffect(() => {
-    const userPreferences = getUserPreferences();
-    setSoundJsonPath(userPreferences.pathToSoundsJson);
+    const userPreferences = soundboardDomain.getUserPreferences();
+    setLocalSoundJsonPath(userPreferences.pathToSoundsJson);
   }, []);
 
   const fileSelected = (event: BaseSyntheticEvent) => {
     const file = event.target.files[0];
     if (file) {
-      setSoundJsonPath(file.path);
-      setUserPreferences(getUserPreferences().setPathToSoundsJson(file.path));
+      setLocalSoundJsonPath(file.path);
+      soundboardDomain.setUserPreferences(
+        soundboardDomain.getUserPreferences().setPathToSoundsJson(file.path)
+      );
     }
   };
 
@@ -33,7 +32,7 @@ const ChooseSoundsPath = () => {
       </div>
       <span className="current-path">
         <span className="label">Current path: </span>
-        {soundJsonPath}
+        {localSoundJsonPath}
       </span>
     </div>
   );

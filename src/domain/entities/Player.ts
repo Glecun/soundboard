@@ -5,7 +5,7 @@ class Player {
   player: HTMLAudioElement;
 
   constructor(sound: Sound, audioOutputDeviceId: string) {
-    this.player = new Audio(`file://${sound.path}`) as HTMLAudioElement;
+    this.player = new Audio(sound.path) as HTMLAudioElement;
     if (audioOutputDeviceId !== 'default') {
       this.player
         // @ts-ignore

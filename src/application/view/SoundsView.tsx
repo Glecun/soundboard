@@ -1,10 +1,11 @@
 import React, { useEffect, useState } from 'react';
 import { FaStop } from 'react-icons/fa';
+import { toast } from 'react-toastify';
 import Sound from '../../domain/entities/Sound';
-import { getSounds } from '../../domain/SoudboardDomain';
 import SoundComponent from '../component/SoundComponent';
 import FilterComponent from '../component/FilterComponent';
 import Filters from '../../domain/entities/Filters';
+import soundboardDomain from '../../domain/SoundboardDomain';
 
 const SoundsView = ({
   stopAllSounds,
@@ -16,7 +17,12 @@ const SoundsView = ({
   const [sounds, setSounds] = useState([] as Sound[]);
   const [filters, setFilters] = useState(new Filters(''));
 
-  useEffect(() => setSounds(getSounds()), []);
+  useEffect(() => {
+    soundboardDomain
+      .getSounds(filters)
+      .then((filteredSounds: Sound[]) => setSounds(filteredSounds))
+      .catch((_) => toast.error('Cannot get sounds'));
+  }, [filters]);
   const onFilterUpdated = (newFilters: Filters) =>
     setFilters(Filters.fromFilters(newFilters));
   const stopAll = () => stopAllSounds.forEach((stopSound) => stopSound());
@@ -31,7 +37,7 @@ const SoundsView = ({
       </div>
 
       <div className="sounds">
-        {filters.applyFilters(sounds).map((sound) => (
+        {sounds.map((sound) => (
           <SoundComponent
             key={sound.name}
             sound={sound}

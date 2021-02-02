@@ -1,14 +1,12 @@
 import React, { useEffect, useState } from 'react';
 import Select from 'react-select';
 import { toast } from 'react-toastify';
-import {
-  getUserPreferences,
-  setUserPreferences,
-} from '../../domain/SoudboardDomain';
+
 import {
   AudioOutput,
   UserPreferences,
 } from '../../domain/entities/UserPreferences';
+import soundboardDomain from '../../domain/SoundboardDomain';
 
 class OptionsDevice {
   value: MediaDeviceInfo;
@@ -55,7 +53,7 @@ const ChooseAudioOutput = () => {
         const optionsDevicesResult = devices
           .filter((device) => device.kind === 'audiooutput')
           .map((device) => OptionsDevice.fromMediaDeviceInfo(device));
-        const userPreferences = getUserPreferences();
+        const userPreferences = soundboardDomain.getUserPreferences();
         setSelectedOption(OptionsDevice.fromUserPreferences(userPreferences));
         setOptionsDevices(optionsDevicesResult);
         return true;
@@ -65,8 +63,10 @@ const ChooseAudioOutput = () => {
 
   const onSelect = (selectedOptionValue: OptionsDevice) => {
     setSelectedOption(selectedOptionValue);
-    setUserPreferences(
-      getUserPreferences().setAudioOutput(selectedOptionValue.toAudioOutput())
+    soundboardDomain.setUserPreferences(
+      soundboardDomain
+        .getUserPreferences()
+        .setAudioOutput(selectedOptionValue.toAudioOutput())
     );
   };
 
