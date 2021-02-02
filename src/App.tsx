@@ -1,6 +1,6 @@
 import * as React from 'react';
 import { BrowserRouter as Router, Switch, Route, Link } from 'react-router-dom';
-import { ToastContainer } from 'react-toastify';
+import { toast, ToastContainer } from 'react-toastify';
 import './App.global.css';
 import { FaCog, FaRegKeyboard } from 'react-icons/fa/';
 import { useState } from 'react';
@@ -15,8 +15,15 @@ export default function App() {
   const [stopAllSounds, setStopAllSounds] = useState([] as (() => void)[]);
   const registerSound = (stopSound: () => void) =>
     setStopAllSounds(stopAllSounds.concat(stopSound));
+
   globalShortcut?.register('Control+F1', () =>
-    soundboardDomain.playRandomSound()
+    soundboardDomain
+      .playRandomSound()
+      .then((player) => {
+        if (player) registerSound(() => player.stop());
+        return '';
+      })
+      .catch((_) => toast.error('Cannot play random sound'))
   );
 
   return (
