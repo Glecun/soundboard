@@ -2,25 +2,21 @@ import { toast } from 'react-toastify';
 import Sound from './Sound';
 
 class Player {
-  player: HTMLAudioElement;
+  player: HTMLAudioElement | undefined;
+
+  sound: Sound;
+
+  audioOutputDeviceId: string;
 
   constructor(sound: Sound, audioOutputDeviceId: string) {
-    this.player = new Audio(sound.path) as HTMLAudioElement;
-    if (audioOutputDeviceId !== 'default') {
-      this.player
-        // @ts-ignore
-        .setSinkId(audioOutputDeviceId)
-        .then(
-          () => true,
-          (e: any) => toast.error(`Error when setting sinkId: ${e}`)
-        )
-        .catch((e: any) => toast.error(`Cannot set sinkId: ${e}`));
-    }
+    this.sound = sound;
+    this.audioOutputDeviceId = audioOutputDeviceId;
+    this.player = undefined;
   }
 
   isPlaying(): boolean {
     return (
-      this.player &&
+      this.player !== undefined &&
       this.player.currentTime > 0 &&
       !this.player.paused &&
       !this.player.ended &&
@@ -28,15 +24,27 @@ class Player {
     );
   }
 
-  play() {
+  async play() {
+    this.player = new Audio(this.sound.path) as HTMLAudioElement;
+    if (this.audioOutputDeviceId !== 'default') {
+      try {
+        // @ts-ignore: setSinkId is an experimental method which is not recognized by typescript
+        await this.player.setSinkId(this.audioOutputDeviceId);
+      } catch (e) {
+        toast.error(`Error when setting sinkId: ${e}`);
+      }
+    }
     this.player
       .play()
       .catch((e) => toast.error(`Error when playing sound : ${e}`));
   }
 
   stop() {
-    this.player.pause();
-    this.player.currentTime = 0;
+    if (this.player) {
+      this.player.pause();
+      this.player.currentTime = 0;
+    }
+    delete this.player;
   }
 }
 

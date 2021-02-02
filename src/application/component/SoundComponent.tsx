@@ -25,7 +25,7 @@ const SoundComponent = ({
     player.play();
     registerSound(stop);
     setIsPlaying(true);
-    player.player.addEventListener('ended', () => setIsPlaying(false));
+    player.player?.addEventListener('ended', () => setIsPlaying(false));
   };
 
   return (
