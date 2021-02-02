@@ -1,3 +1,4 @@
+import { toast } from 'react-toastify';
 import { UserPreferences } from './entities/UserPreferences';
 import UserPreferenceAdapter from '../infrastructure/UserPreferenceAdapter';
 import LocalSoundAdapter from '../infrastructure/LocalSoundAdapter';
@@ -45,18 +46,20 @@ export class SoundboardDomain {
     return this.userPreferenceAdapter.getUserPreferences();
   }
 
-  async playRandomSound() {
+  async playRandomSound(): Promise<Player | null> {
     const oneSoundBySource = this.getOneRandomLocalSound().concat(
       await this.myInstantSoundAdapter.getOneRandomSound()
     );
     if (oneSoundBySource && oneSoundBySource.length > 0) {
       const audioOutput = this.getUserPreferences().audioOutput.id;
-      const player = new Player(
-        oneSoundBySource[Math.floor(Math.random() * oneSoundBySource.length)],
-        audioOutput
-      );
+      const sound =
+        oneSoundBySource[Math.floor(Math.random() * oneSoundBySource.length)];
+      const player = new Player(sound, audioOutput);
       player.play();
+      toast.info(`Random sound: ${sound.name}`);
+      return player;
     }
+    return null;
   }
 
   private getOneRandomLocalSound(): Sound[] {
