@@ -1,7 +1,7 @@
 {
   "name": "soundboard",
   "productName": "soundboard",
-  "version": "0.0.4",
+  "version": "0.0.5",
   "description": "soundboard desktop app",
   "main": "./main.prod.js",
   "scripts": {
