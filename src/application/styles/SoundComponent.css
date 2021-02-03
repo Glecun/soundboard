@@ -23,7 +23,12 @@
   font-weight: bold;
 }
 
-.sound-component .author {
+.sound-component .name-author-container .author {
   font-size: 13px;
   font-weight: normal;
+}
+
+.sound-component .source-icon {
+  margin-left: auto;
+  font-size: 22px;
 }
