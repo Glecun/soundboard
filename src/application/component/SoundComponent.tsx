@@ -1,8 +1,9 @@
 import React, { useState } from 'react';
-import { FaPlay, FaStop } from 'react-icons/fa';
+import { FaGlobeAmericas, FaHdd, FaPlay, FaStop } from 'react-icons/fa';
 import Sound from '../../domain/entities/Sound';
 import Player from '../../domain/entities/Player';
 import soundboardDomain from '../../domain/SoundboardDomain';
+import Source from '../../domain/entities/Source';
 
 const SoundComponent = ({
   sound,
@@ -41,6 +42,11 @@ const SoundComponent = ({
         <span>{sound.name}</span>
         <span className="author">{sound.author}</span>
       </div>
+      {sound.source === Source.LOCAL ? (
+        <FaHdd className="source-icon" title={sound.source} />
+      ) : (
+        <FaGlobeAmericas className="source-icon" title={sound.source} />
+      )}
     </div>
   );
 };
