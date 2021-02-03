@@ -255,7 +255,7 @@
     "react-icons": "^4.1.0",
     "react-router-dom": "^5.2.0",
     "react-select": "^4.0.2",
-    "react-toastify": "^7.0.2",
+    "react-toastify": "^7.0.3",
     "regenerator-runtime": "^0.13.5",
     "source-map-support": "^0.5.19"
   },
