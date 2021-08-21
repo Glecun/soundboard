@@ -25,7 +25,7 @@ describe('MyInstantSoundAdapterTest', () => {
       new Response(JSON.stringify(json))
     );
 
-    const sounds = await myInstantSoundAdapter.getSounds('');
+    const sounds = await myInstantSoundAdapter.getSounds('Ris');
     expect(sounds).toEqual([
       new Sound(
         'Risada Carlos Alberto Nobrega',
@@ -41,7 +41,7 @@ describe('MyInstantSoundAdapterTest', () => {
       new Error('some error')
     );
 
-    const sounds = await myInstantSoundAdapter.getSounds('');
+    const sounds = await myInstantSoundAdapter.getSounds('Ris');
 
     expect(sounds).toEqual([]);
   });
@@ -68,5 +68,10 @@ describe('MyInstantSoundAdapterTest', () => {
         Source.MYINSTANT
       ),
     ]);
+  });
+
+  it('should not get sounds when search input has not at least 3 letters', async () => {
+    const sounds = await myInstantSoundAdapter.getSounds('Ri');
+    expect(sounds).toEqual([]);
   });
 });

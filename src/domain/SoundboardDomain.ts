@@ -35,7 +35,7 @@ export class SoundboardDomain {
     );
     return filters
       .applyFilters(localSounds.concat(myInstantSounds))
-      .slice(0, conf.number_of_sound_in_list);
+      .slice(0, conf.max_number_of_sound_in_list);
   }
 
   setUserPreferences(userPreferences: UserPreferences) {

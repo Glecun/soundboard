@@ -1,3 +1,4 @@
 {
-   "number_of_sound_in_list": 50
+   "max_number_of_sound_in_list": 200,
+   "max_number_of_sound_from_myinstant": 50
 }
