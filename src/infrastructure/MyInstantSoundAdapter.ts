@@ -9,21 +9,21 @@ const fetch = require('node-fetch');
 class MyInstantSoundAdapter {
   async getSounds(search: string): Promise<Sound[]> {
     try {
-      const searchParam =
-        search != null && search.length >= 2
-          ? `&search=${encodeURI(search)}`
-          : '';
-      return await fetch(
-        `https://api.cleanvoice.ru/myinstants/?type=many&offset=0&limit=${conf.number_of_sound_in_list}${searchParam}`
-      )
-        .then((response: Response) => response.json())
-        .then((dataJson: { items: MyInstantSoundJson[] }) =>
-          dataJson.items
-            .map((myInstantSoundJson) =>
-              MyInstantSoundJson.fromMyInstantSoundJson(myInstantSoundJson)
-            )
-            .map((myInstantSoundJson) => myInstantSoundJson.toSound())
-        );
+      if (search != null && search.length >= 2) {
+        return await fetch(
+          `https://api.cleanvoice.ru/myinstants/?type=many&offset=0&limit=${
+            conf.max_number_of_sound_from_myinstant
+          }&search=${encodeURI(search)}`
+        )
+          .then((response: Response) => response.json())
+          .then((dataJson: { items: MyInstantSoundJson[] }) =>
+            dataJson.items
+              .map((myInstantSoundJson) =>
+                MyInstantSoundJson.fromMyInstantSoundJson(myInstantSoundJson)
+              )
+              .map((myInstantSoundJson) => myInstantSoundJson.toSound())
+          );
+      }
     } catch (error) {
       toast.error('Cannot get myInstant Sounds');
     }
