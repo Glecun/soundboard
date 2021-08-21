@@ -13,9 +13,7 @@ class UserPreferenceAdapter {
   userPreferences: UserPreferences;
 
   constructor() {
-    const myApp = app || remote?.app;
-    const userDataPath = myApp ? myApp.getPath('userData') : '';
-    this.path = path.join(userDataPath, 'user-preferences.json');
+    this.path = UserPreferenceAdapter.getFilePath('user-preferences.json');
     this.userPreferences = UserPreferenceAdapter.parseDataFile(this.path);
   }
 
@@ -36,9 +34,23 @@ class UserPreferenceAdapter {
     } catch (error) {
       return new UserPreferences(
         new AudioOutput('default', 'default'),
-        './sounds.json'
+        UserPreferenceAdapter.getOrCreateEmptySoundsListFile()
       );
     }
+  }
+
+  private static getOrCreateEmptySoundsListFile(): string {
+    const filePath = UserPreferenceAdapter.getFilePath('sounds.json');
+    if (!fs.existsSync(filePath)) {
+      fs.writeFileSync(filePath, '{"soundboardEntries": []}');
+    }
+    return filePath;
+  }
+
+  private static getFilePath(name: string): string {
+    const myApp = app || remote?.app;
+    const userDataPath = myApp ? myApp.getPath('userData') : '';
+    return path.join(userDataPath, name);
   }
 }
 
