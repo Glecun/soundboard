@@ -30,6 +30,7 @@ class LocalSoundAdapter {
       return JSON.parse(rawData);
     } catch (e) {
       toast.error(`Cannot parse json: ${rawData}`);
+      console.error(e);
       return new LocalSoundFileJson([]);
     }
   }

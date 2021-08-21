@@ -21,7 +21,10 @@ const SoundsView = ({
     soundboardDomain
       .getSounds(filters)
       .then((filteredSounds: Sound[]) => setSounds(filteredSounds))
-      .catch((_) => toast.error('Cannot get sounds'));
+      .catch((e) => {
+        console.error(e);
+        toast.error('Cannot get sounds');
+      });
   }, [filters]);
   const onFilterUpdated = (newFilters: Filters) =>
     setFilters(Filters.fromFilters(newFilters));
