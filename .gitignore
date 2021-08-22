@@ -51,3 +51,5 @@ npm-debug.log.*
 /sounds/
 /src/main.prod.js.LICENSE.txt
 /.github/pfx/
+
+sounds.json
