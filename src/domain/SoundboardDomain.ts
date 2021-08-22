@@ -46,6 +46,22 @@ export class SoundboardDomain {
     return this.userPreferenceAdapter.getUserPreferences();
   }
 
+  addSound(soundPath: string) {
+    const userPreferences = this.userPreferenceAdapter.getUserPreferences();
+    this.localSoundAdapter.addSound(
+      userPreferences.pathToSoundsJson,
+      soundPath
+    );
+  }
+
+  removeSound(sound: Sound) {
+    const userPreferences = this.userPreferenceAdapter.getUserPreferences();
+    this.localSoundAdapter.removeSound(
+      userPreferences.pathToSoundsJson,
+      sound.path
+    );
+  }
+
   async playRandomSound(): Promise<Player | null> {
     const oneSoundBySource = this.getOneRandomLocalSound().concat(
       await this.myInstantSoundAdapter.getOneRandomSound()

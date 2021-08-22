@@ -9,6 +9,8 @@
 @import 'application/styles/ChooseSoundsPath.css';
 @import 'application/styles/FiltersComponent.css';
 @import 'application/styles/TopBarComponent.css';
+@import 'application/styles/AddSound.css';
+@import 'application/styles/RemoveSound.css';
 
 /* toastify */
 @import '../node_modules/react-toastify/dist/ReactToastify.css';

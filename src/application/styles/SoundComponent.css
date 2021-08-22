@@ -27,8 +27,20 @@
   font-size: 13px;
   font-weight: normal;
 }
+.sound-component .row-end {
+  margin-left: auto;
+  display: flex;
+  align-items: center;
+}
 
 .sound-component .source-icon {
-  margin-left: auto;
   font-size: 22px;
+}
+
+.sound-component .remove-button-container {
+  display: none;
+  margin-right: 20px;
+}
+.sound-component:hover .remove-button-container {
+  display: block;
 }

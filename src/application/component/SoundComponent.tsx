@@ -4,13 +4,16 @@ import Sound from '../../domain/entities/Sound';
 import Player from '../../domain/entities/Player';
 import soundboardDomain from '../../domain/SoundboardDomain';
 import Source from '../../domain/entities/Source';
+import RemoveSound from './RemoveSound';
 
 const SoundComponent = ({
   sound,
   registerSound,
+  reloadSounds,
 }: {
   sound: Sound;
   registerSound: (stopSound: () => void) => void;
+  reloadSounds: () => void;
 }) => {
   const [player] = useState(
     new Player(sound, soundboardDomain.getUserPreferences().audioOutput.id)
@@ -43,9 +46,16 @@ const SoundComponent = ({
         <span className="author">{sound.author}</span>
       </div>
       {sound.source === Source.LOCAL ? (
-        <FaHdd className="source-icon" title={sound.source} />
+        <div className="row-end">
+          <div className="animated fadeInRight remove-button-container">
+            <RemoveSound sound={sound} reloadSounds={reloadSounds} />
+          </div>
+          <FaHdd className="source-icon" title={sound.source} />
+        </div>
       ) : (
-        <FaGlobeAmericas className="source-icon" title={sound.source} />
+        <div className="row-end">
+          <FaGlobeAmericas className="source-icon" title={sound.source} />
+        </div>
       )}
     </div>
   );
