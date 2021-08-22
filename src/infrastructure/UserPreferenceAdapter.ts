@@ -42,7 +42,13 @@ class UserPreferenceAdapter {
   private static getOrCreateEmptySoundsListFile(): string {
     const filePath = UserPreferenceAdapter.getFilePath('sounds.json');
     if (!fs.existsSync(filePath)) {
-      fs.writeFileSync(filePath, '{"soundboardEntries": []}');
+      const defaultSoundPath = app?.isPackaged
+        ? path.join(process.resourcesPath, 'assets', 'oof.mp3')
+        : path.join(__dirname, '../assets', 'oof.mp3');
+      fs.writeFileSync(
+        filePath,
+        `{"soundboardEntries": [{"file": "${defaultSoundPath}"}]}`
+      );
     }
     return filePath;
   }
