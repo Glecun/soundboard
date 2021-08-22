@@ -23,7 +23,10 @@ export default function App() {
         if (player) registerSound(() => player.stop());
         return '';
       })
-      .catch((_) => toast.error('Cannot play random sound'))
+      .catch((e) => {
+        toast.error('Cannot play random sound');
+        console.error(e);
+      })
   );
 
   return (
