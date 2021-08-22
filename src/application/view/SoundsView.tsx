@@ -18,8 +18,6 @@ const SoundsView = ({
   const [sounds, setSounds] = useState([] as Sound[]);
   const [filters, setFilters] = useState(new Filters(''));
 
-  useEffect(() => reloadSounds(), [filters]);
-
   const reloadSounds = () => {
     soundboardDomain
       .getSounds(filters)
@@ -32,6 +30,8 @@ const SoundsView = ({
   const onFilterUpdated = (newFilters: Filters) =>
     setFilters(Filters.fromFilters(newFilters));
   const stopAll = () => stopAllSounds.forEach((stopSound) => stopSound());
+
+  useEffect(() => reloadSounds(), [filters]);
 
   return (
     <div className="sounds-view animated fadeInRight">
