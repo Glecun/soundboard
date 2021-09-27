@@ -11,7 +11,7 @@
 import 'core-js/stable';
 import 'regenerator-runtime/runtime';
 import path from 'path';
-import { app, BrowserWindow, shell } from 'electron';
+import { app, BrowserWindow, Menu, shell, Tray } from 'electron';
 import { autoUpdater } from 'electron-updater';
 import log from 'electron-log';
 import MenuBuilder from './menu';
@@ -50,7 +50,8 @@ const installExtensions = async () => {
     )
     .catch(console.log);
 };
-
+let tray;
+let isQuiting = false;
 const createWindow = async () => {
   if (
     process.env.NODE_ENV === 'development' ||
@@ -77,6 +78,41 @@ const createWindow = async () => {
       nodeIntegration: true,
       enableRemoteModule: true,
     },
+  });
+
+  tray = new Tray(getAssetPath('logo.png')); // TODO icon
+  // TODO on click
+  tray.setContextMenu(
+    Menu.buildFromTemplate([
+      {
+        label: 'Show App',
+        click() {
+          mainWindow?.show();
+        },
+      },
+      {
+        label: 'Quit',
+        click() {
+          isQuiting = true;
+          app.quit();
+        },
+      },
+    ])
+  );
+  tray.setToolTip('Soundboard');
+  tray.setIgnoreDoubleClickEvents(true);
+  tray.on('click', (_) => {
+    if (!mainWindow?.isVisible()) {
+      mainWindow?.show();
+    }
+  });
+
+  mainWindow.on('close', function (event: Event) {
+    if (!isQuiting) {
+      event.preventDefault();
+      mainWindow?.hide();
+    }
+    return false;
   });
 
   mainWindow.loadURL(`file://${__dirname}/index.html`);
