@@ -18,7 +18,7 @@ const FilterComponent = ({
       <FaSearch className="search-icon" />
       <input
         className="input-search"
-        placeholder="Recherche..."
+        placeholder="Search..."
         value={search}
         onChange={onChange}
       />
