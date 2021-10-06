@@ -69,13 +69,15 @@
       "target": [
         "nsis"
       ],
-      "publisherName": "Glecun"
+      "publisherName": "Glecun",
+      "icon": "assets/logo.png"
     },
     "linux": {
       "target": [
         "AppImage"
       ],
-      "category": "Development"
+      "category": "Development",
+      "icon": "assets/logo.png"
     },
     "directories": {
       "app": "src",
