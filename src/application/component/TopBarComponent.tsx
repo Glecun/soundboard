@@ -16,9 +16,9 @@ const TopBarComponent = () => {
       window?.maximize();
     }
   };
-  const closeWidow = () => {
+  const closeWindow = () => {
     const window = BrowserWindow.getFocusedWindow();
-    window?.close();
+    window?.hide();
   };
 
   return (
@@ -29,7 +29,7 @@ const TopBarComponent = () => {
       <button onClick={() => maximize()} className="max-btn" type="button">
         <FaWindowMaximize />
       </button>
-      <button onClick={() => closeWidow()} className="close-btn" type="button">
+      <button onClick={() => closeWindow()} className="close-btn" type="button">
         <FaTimes />
       </button>
     </div>
