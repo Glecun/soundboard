@@ -11,7 +11,7 @@
 import 'core-js/stable';
 import 'regenerator-runtime/runtime';
 import path from 'path';
-import { app, BrowserWindow, Menu, shell, Tray } from 'electron';
+import { app, BrowserWindow, Menu, nativeImage, shell, Tray } from 'electron';
 import { autoUpdater } from 'electron-updater';
 import log from 'electron-log';
 import MenuBuilder from './menu';
@@ -80,8 +80,11 @@ const createWindow = async () => {
     },
   });
 
-  tray = new Tray(getAssetPath('logo.png')); // TODO icon
-  // TODO on click
+  tray = new Tray(
+    nativeImage
+      .createFromPath(getAssetPath('logo.ico'))
+      .resize({ width: 16, height: 16 })
+  );
   tray.setContextMenu(
     Menu.buildFromTemplate([
       {
