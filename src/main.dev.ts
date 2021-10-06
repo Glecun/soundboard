@@ -51,7 +51,6 @@ const installExtensions = async () => {
     .catch(console.log);
 };
 let tray;
-let isQuiting = false;
 const createWindow = async () => {
   if (
     process.env.NODE_ENV === 'development' ||
@@ -80,11 +79,10 @@ const createWindow = async () => {
     },
   });
 
-  tray = new Tray(
-    nativeImage
-      .createFromPath(getAssetPath('logo.ico'))
-      .resize({ width: 16, height: 16 })
-  );
+  const logoIco = nativeImage
+    .createFromPath(getAssetPath('logo.ico'))
+    .resize({ width: 16, height: 16 });
+  tray = new Tray(logoIco);
   tray.setContextMenu(
     Menu.buildFromTemplate([
       {
@@ -96,7 +94,6 @@ const createWindow = async () => {
       {
         label: 'Quit',
         click() {
-          isQuiting = true;
           app.quit();
         },
       },
@@ -104,19 +101,7 @@ const createWindow = async () => {
   );
   tray.setToolTip('Soundboard');
   tray.setIgnoreDoubleClickEvents(true);
-  tray.on('click', (_) => {
-    if (!mainWindow?.isVisible()) {
-      mainWindow?.show();
-    }
-  });
-
-  mainWindow.on('close', function (event: Event) {
-    if (!isQuiting) {
-      event.preventDefault();
-      mainWindow?.hide();
-    }
-    return false;
-  });
+  tray.on('click', (_) => mainWindow?.show());
 
   mainWindow.loadURL(`file://${__dirname}/index.html`);
 
