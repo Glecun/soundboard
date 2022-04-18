@@ -23,13 +23,13 @@ describe('SoundboardDomainTest', () => {
   it('should get sounds', async () => {
     const soundLocal = new Sound(
       'localSound',
-      'author',
+      'description',
       'file://lol',
       Source.LOCAL
     );
     const soundMyInstant = new Sound(
       'myInstantSound',
-      'author',
+      'description',
       'https://lol',
       Source.MYINSTANT
     );
@@ -46,20 +46,25 @@ describe('SoundboardDomainTest', () => {
   it('should get sounds with filter', async () => {
     const soundLocal = new Sound(
       'localSound',
-      'author',
+      'description',
       'file://lol',
       Source.LOCAL
     );
-    const soundLocal2 = new Sound('toto', 'author', 'file://lol', Source.LOCAL);
+    const soundLocal2 = new Sound(
+      'toto',
+      'description',
+      'file://lol',
+      Source.LOCAL
+    );
     const soundMyInstant = new Sound(
       'myInstantSound',
-      'author',
+      'description',
       'https://lol',
       Source.MYINSTANT
     );
     const soundMyInstant2 = new Sound(
       'tata',
-      'author',
+      'description',
       'https://lol',
       Source.MYINSTANT
     );

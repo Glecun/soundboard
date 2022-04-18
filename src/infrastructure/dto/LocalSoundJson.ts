@@ -26,16 +26,16 @@ export class LocalSoundJson {
 
   toSound(): Sound {
     let nameExtracted: RegExpMatchArray | null;
-    let authorExtracted: RegExpMatchArray | null;
+    let parentExtracted: RegExpMatchArray | null;
     if (os.platform() === 'win32') {
       nameExtracted = /.*\\(.*)\..*$/.exec(this.file);
-      authorExtracted = /.*\\(.*)\\.*$/.exec(this.file);
+      parentExtracted = /.*\\(.*)\\.*$/.exec(this.file);
     } else {
       nameExtracted = /.*\/(.*)\..*$/.exec(this.file);
-      authorExtracted = /.*\/(.*)\/.*$/.exec(this.file);
+      parentExtracted = /.*\/(.*)\/.*$/.exec(this.file);
     }
     const name = nameExtracted ? nameExtracted[1] : '';
-    const author = authorExtracted ? authorExtracted[1] : '';
-    return new Sound(name, author, `file://${this.file}`, Source.LOCAL);
+    const description = parentExtracted ? parentExtracted[1] : '';
+    return new Sound(name, description, `file://${this.file}`, Source.LOCAL);
   }
 }
