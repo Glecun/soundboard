@@ -13,7 +13,8 @@ class Filters {
 
   applyFilters(sounds: Sound[]): Sound[] {
     return sounds.filter(
-      (sound) => this.matchSearch(sound.name) || this.matchSearch(sound.author)
+      (sound) =>
+        this.matchSearch(sound.name) || this.matchSearch(sound.description)
     );
   }
 

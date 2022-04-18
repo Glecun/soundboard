@@ -17,13 +17,13 @@
   color: #c60000;
 }
 
-.sound-component .name-author-container {
+.sound-component .name-description-container {
   display: flex;
   flex-direction: column;
   font-weight: bold;
 }
 
-.sound-component .name-author-container .author {
+.sound-component .name-description-container .description {
   font-size: 13px;
   font-weight: normal;
 }

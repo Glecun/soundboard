@@ -12,12 +12,16 @@ describe('MyInstantSoundAdapterTest', () => {
 
   it('should get sounds', async () => {
     const json = {
-      items: [
+      results: [
         {
-          id: 1,
-          filename: 'risada_carlos_alberto_mp3cut.mp3',
-          title: 'Risada Carlos Alberto Nobrega',
-          duration: '4.20563',
+          name: 'biggest oof of oofers',
+          slug: 'biggest-oof-of-oofers-66740',
+          sound:
+            'http://www.myinstants.com/media/sounds/mario-64-oof-sound-effect-0s-0.mp3',
+          color: 'FF00EE',
+          image: null,
+          description: 'oof',
+          tags: '',
         },
       ],
     };
@@ -28,9 +32,9 @@ describe('MyInstantSoundAdapterTest', () => {
     const sounds = await myInstantSoundAdapter.getSounds('Ris');
     expect(sounds).toEqual([
       new Sound(
-        'Risada Carlos Alberto Nobrega',
-        '',
-        'https://api.cleanvoice.ru/myinstants/?type=file&id=1',
+        'biggest oof of oofers',
+        'oof',
+        'http://www.myinstants.com/media/sounds/mario-64-oof-sound-effect-0s-0.mp3',
         Source.MYINSTANT
       ),
     ]);
@@ -44,30 +48,6 @@ describe('MyInstantSoundAdapterTest', () => {
     const sounds = await myInstantSoundAdapter.getSounds('Ris');
 
     expect(sounds).toEqual([]);
-  });
-
-  it('should get one sound randomly', async () => {
-    const json = {
-      id: 1,
-      filename: 'risada_carlos_alberto_mp3cut.mp3',
-      title: 'Risada Carlos Alberto Nobrega',
-      duration: '4.20563',
-    };
-
-    (fetch as jest.MockedFunction<typeof fetch>).mockResolvedValueOnce(
-      new Response(JSON.stringify(json))
-    );
-
-    const sounds = await myInstantSoundAdapter.getOneRandomSound();
-
-    expect(sounds).toEqual([
-      new Sound(
-        'Risada Carlos Alberto Nobrega',
-        '',
-        'https://api.cleanvoice.ru/myinstants/?type=file&id=1',
-        Source.MYINSTANT
-      ),
-    ]);
   });
 
   it('should not get sounds when search input has not at least 3 letters', async () => {

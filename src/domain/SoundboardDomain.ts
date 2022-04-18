@@ -63,30 +63,26 @@ export class SoundboardDomain {
   }
 
   async playRandomSound(): Promise<Player | null> {
-    const oneSoundBySource = this.getOneRandomLocalSound().concat(
-      await this.myInstantSoundAdapter.getOneRandomSound()
-    );
-    if (oneSoundBySource && oneSoundBySource.length > 0) {
+    const randomSound = this.getOneRandomLocalSound();
+    if (randomSound) {
       const audioOutput = this.getUserPreferences().audioOutput.id;
-      const sound =
-        oneSoundBySource[Math.floor(Math.random() * oneSoundBySource.length)];
-      const player = new Player(sound, audioOutput);
+      const player = new Player(randomSound, audioOutput);
       player.play();
-      toast.info(`Random sound: ${sound.name}`);
+      toast.info(`Random sound: ${randomSound.name}`);
       return player;
     }
     return null;
   }
 
-  private getOneRandomLocalSound(): Sound[] {
+  private getOneRandomLocalSound(): Sound | null {
     const userPreferences = this.userPreferenceAdapter.getUserPreferences();
     const localSounds = this.localSoundAdapter.getSounds(
       userPreferences.pathToSoundsJson
     );
     if (localSounds && localSounds.length > 0) {
-      return [localSounds[Math.floor(Math.random() * localSounds.length)]];
+      return localSounds[Math.floor(Math.random() * localSounds.length)];
     }
-    return [];
+    return null;
   }
 }
 

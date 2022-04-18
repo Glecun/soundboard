@@ -41,9 +41,9 @@ const SoundComponent = ({
           <FaStop className="stop" onClick={() => stop()} />
         )}
       </div>
-      <div className="name-author-container">
+      <div className="name-description-container">
         <span>{sound.name}</span>
-        <span className="author">{sound.author}</span>
+        <span className="description">{sound.description}</span>
       </div>
       {sound.source === Source.LOCAL ? (
         <div className="row-end">

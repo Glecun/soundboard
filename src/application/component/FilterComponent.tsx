@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { FaSearch } from 'react-icons/fa';
+import { DebounceInput } from 'react-debounce-input';
 import Filters from '../../domain/entities/Filters';
 
 const FilterComponent = ({
@@ -16,9 +17,10 @@ const FilterComponent = ({
   return (
     <div className="filters-component">
       <FaSearch className="search-icon" />
-      <input
+      <DebounceInput
         className="input-search"
         placeholder="Search..."
+        debounceTimeout={400}
         value={search}
         onChange={onChange}
       />

@@ -2,37 +2,28 @@ import Sound from '../../domain/entities/Sound';
 import Source from '../../domain/entities/Source';
 
 class MyInstantSoundJson {
-  id: number;
+  name: string;
 
-  filename: string;
+  sound: string;
 
-  title: string;
+  description: string;
 
-  duration: string;
-
-  constructor(id: number, filename: string, title: string, duration: string) {
-    this.id = id;
-    this.filename = filename;
-    this.title = title;
-    this.duration = duration;
+  constructor(name: string, sound: string, description: string) {
+    this.name = name;
+    this.sound = sound;
+    this.description = description;
   }
 
   static fromMyInstantSoundJson(myInstantSoundJson: MyInstantSoundJson) {
     return new MyInstantSoundJson(
-      myInstantSoundJson.id,
-      myInstantSoundJson.filename,
-      myInstantSoundJson.title,
-      myInstantSoundJson.duration
+      myInstantSoundJson.name,
+      myInstantSoundJson.sound,
+      myInstantSoundJson.description
     );
   }
 
   toSound(): Sound {
-    return new Sound(
-      this.title,
-      '',
-      `https://api.cleanvoice.ru/myinstants/?type=file&id=${this.id}`,
-      Source.MYINSTANT
-    );
+    return new Sound(this.name, this.description, this.sound, Source.MYINSTANT);
   }
 }
 

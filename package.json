@@ -253,6 +253,7 @@
     "history": "^5.0.0",
     "node-fetch": "^2.6.1",
     "react": "^17.0.1",
+    "react-debounce-input": "^3.2.5",
     "react-dom": "^17.0.1",
     "react-icons": "^4.1.0",
     "react-router-dom": "^5.2.0",
