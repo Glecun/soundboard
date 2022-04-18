@@ -6,7 +6,6 @@ import Sound from './entities/Sound';
 import Player from './entities/Player';
 import MyInstantSoundAdapter from '../infrastructure/MyInstantSoundAdapter';
 import Filters from './entities/Filters';
-import conf from '../../conf/conf.json';
 
 export class SoundboardDomain {
   localSoundAdapter: LocalSoundAdapter;
@@ -33,9 +32,7 @@ export class SoundboardDomain {
     const myInstantSounds = await this.myInstantSoundAdapter.getSounds(
       filters.search
     );
-    return filters
-      .applyFilters(localSounds.concat(myInstantSounds))
-      .slice(0, conf.max_number_of_sound_in_list);
+    return filters.applyFilters(localSounds.concat(myInstantSounds));
   }
 
   setUserPreferences(userPreferences: UserPreferences) {
