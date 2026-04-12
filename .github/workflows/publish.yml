@@ -8,26 +8,34 @@ on:
     branches:
       - main
 
+permissions:
+  contents: write
+
 jobs:
   publish:
     runs-on: ${{ matrix.os }}
 
     strategy:
       matrix:
-        os: [macos-latest]
+        include:
+          - os: windows-latest
+            target: --win
+          - os: ubuntu-latest
+            target: --linux
 
     steps:
       - name: Checkout git repo
-        uses: actions/checkout@v3
+        uses: actions/checkout@v4
 
       - name: Install Node, NPM and Yarn
-        uses: actions/setup-node@v3
+        uses: actions/setup-node@v4
         with:
-          node-version: 15
+          node-version: 20
+          cache: yarn
 
       - name: Install dependencies
         run: |
-          yarn install
+          yarn install --frozen-lockfile --network-timeout 300000
       - name: Publish releases
         env:
           # These values are used for auto updates signing
@@ -38,4 +46,5 @@ jobs:
           # This is used for uploading release assets to github
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: |
-          yarn postinstall && yarn build && yarn electron-builder --publish always --win --linux
+          yarn build
+          yarn electron-builder --publish always ${{ matrix.target }}
