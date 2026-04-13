@@ -42,13 +42,14 @@ const installExtensions = async () => {
   const installer = require('electron-devtools-installer');
   const forceDownload = !!process.env.UPGRADE_EXTENSIONS;
   const extensions = ['REACT_DEVELOPER_TOOLS'];
-
-  return installer
-    .default(
+  try {
+    await installer.default(
       extensions.map((name) => installer[name]),
       forceDownload
-    )
-    .catch(console.log);
+    );
+  } catch {
+    // React DevTools are optional in development.
+  }
 };
 let tray;
 const createWindow = async () => {
@@ -76,6 +77,7 @@ const createWindow = async () => {
     webPreferences: {
       nodeIntegration: true,
       enableRemoteModule: true,
+      contextIsolation: false,
     },
   });
 
@@ -132,9 +134,11 @@ const createWindow = async () => {
     shell.openExternal(url);
   });
 
-  // Remove this if your app does not use auto updates
-  // eslint-disable-next-line
-  new AppUpdater();
+  if (app.isPackaged) {
+    // Remove this if your app does not use auto updates
+    // eslint-disable-next-line
+    new AppUpdater();
+  }
 };
 
 /**
